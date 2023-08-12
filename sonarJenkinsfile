@@ -5,7 +5,7 @@ pileline
 
  { stage('scm_checkout')
 
-{steps{git branch: 'master', url: 'https://github.com/swatiza/maven-project' } }
+{steps{git branch: 'master', url: 'https://github.com/swatiza/maven-project.git' } }
 
 stage ('execute unit test')
 
