@@ -9,16 +9,17 @@ pileline
 
 stage ('execute unit test')
 
-{stepes { withMaven(globalMavenSettingsConfig: 'f634dd9e-8068-4529-bd9f-d70e1eef336e', jdk: 'JDKlocal', maven: 'mavenlocal',
-mavenSettingsConfig: '059c0fb9-55eb-4bd2-a67e-48fcdb3d38b6', traceability: true)
- { sh 'mvn unit test'}
+{steps { withMaven(globalMavenSettingsConfig: 'c583f974-18c4-482d-925c-c6b3dbb04489', jdk: 'LOCALJDK', maven: 'LOCALMVN',
+mavenSettingsConfig: 'b4a17510-35d6-427e-ad2d-a0ee2d4b24c5', traceability: true) 
+ { sh 'mvn test'}
 } } 
     
  stage  ('run sonar and build the code')
-{ stepes { withSonarQubeEnv(credentialsId: 'sonar',installationName:'sonar') { withMaven(globalMavenSettingsConfig: 'f634dd9e-8068-4529-bd9f-d70e1eef336e', 
-jdk: 'JDKlocal', maven: 'mavenlocal', mavenSettingsConfig: '059c0fb9-55eb-4bd2-a67e-48fcdb3d38b6', traceability: true)
- { sh 'sonar:sonar package' }
-    } } } 
+{ steps { withSonarQubeEnv(credentialsId: 'sonar' , installationName: 'sonar') { withMaven(globalMavenSettingsConfig: 'c583f974-18c4-482d-925c-c6b3dbb04489', 
+jdk: 'LOCALJDK', maven: 'LOCALMVN', mavenSettingsConfig: 'b4a17510-35d6-427e-ad2d-a0ee2d4b24c5', traceability: true)
+{sh 'mvn package sonar:sonar'}
+   
+} } } 
 
 
 }
