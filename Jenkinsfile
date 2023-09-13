@@ -27,7 +27,7 @@ stage('docker image creation')
 steps{ sh 'docker build -t swatizambre/tomcat2023:latest .'}
 }
 stage('docker push to docker registry')
-{steps{withDockerRegistry(credentialsId: 'dockerhubaccount', url: ' https://index.docker.io/v1/') {
+{steps{withDockerRegistry(credentialsId: 'dockerhubAccount', url: 'https://index.docker.io/v1/') {
     sh 'docker push swatizambre/tomcat2023:latest'
 }}
 }
