@@ -7,6 +7,7 @@ agent any
             steps{
                 git branch: 'master', url: 'https://github.com/swatiza/maven-project/'
         }
+        }
         stage('execute umit test framework'){
             steps{
                 withMaven(globalMavenSettingsConfig: '33a86476-a5a1-457b-b286-5c6a1b66cd7e', jdk: 'localjdk', maven: 'localmaven', mavenSettingsConfig: '88f23039-03a5-484a-81d3-043fdbf0bc3e', traceability: true) {
